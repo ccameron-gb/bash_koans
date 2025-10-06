@@ -8,7 +8,7 @@ test_if_condition() {
     local assert='YES'
   fi
 
-  assertEqual $assert __
+  assertEqual $assert YES
 }
 
 
@@ -22,18 +22,18 @@ test_if_condition_with_else() {
     local assert='NO'
   fi
 
-  assertEqual $assert __
+  assertEqual $assert NO
 }
 
 test_if_condition_with_variables() {
   local variable="OMG"
-  local condition='OMG' #__
+  local condition='OMG' #The quotations don't matter for conditions and variables. 
 
   if [  "$variable" = "$condition" ]; then
     local assert='ok'
   fi
 
-  assertEqual $assert __
+  assertEqual $assert ok
 
 }
 
@@ -47,7 +47,7 @@ test_multiple_if_conditions() {
     local assert='YES'
   fi
 
-  assertEqual $assert __
+  assertEqual $assert YES
 
 }
 
@@ -56,13 +56,13 @@ test_directory_if_conditions() {
     local assert='yes'
   fi
 
-  assertEqual $assert __
+  assertEqual $assert yes
 
   if [ ! -d NOT_EXISTENT_DIR ]; then
     local assert='no'
   fi
 
-  assertEqual $assert __
+  assertEqual $assert no
 
 }
 
@@ -71,7 +71,7 @@ test_file_if_conditions() {
     local assert='yes'
   fi
 
-  assertEqual $assert __
+  assertEqual $assert yes
 
 }
 
