@@ -6,7 +6,7 @@ test_for_loops() {
   for _ in $( seq 1 10 ); do
     (( sum++ ))
   done
-  assertEqual $sum __
+  assertEqual $sum 10
 }
 
 test_while_loops() {
