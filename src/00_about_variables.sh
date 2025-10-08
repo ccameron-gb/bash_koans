@@ -10,8 +10,10 @@ test_setting_the_variable() {
 }
 
 test_using_double_quotes() {
+  # Declare a local variable named 'variable' and assign 2
   local variable=2
-  assertEqual "foo $variable" __
+  # Double quotes allow variable expansion
+  assertEqual "foo $variable" "foo 2"
 }
 
 test_unsetting_variables() {
