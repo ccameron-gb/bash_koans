@@ -70,16 +70,22 @@ test_variable_name_expansion_within_text() {
 }
 
 test_only_exported_variables_are_accessible_by_another_process() {
+  # Declare a local variable named 'MY_EXPORTED_VARIABLE' and assign 43
   local MY_EXPORTED_VARIABLE=43
 
-  assertEqual "$(support/variable_check)" __
+  # Variable was not exported, so process sees nothing
+  assertEqual "$(support/variable_check)" ""
 
+  # Declare a global variable named 'MY_EXPORTED_VARIABLE' and assign 43
   MY_EXPORTED_VARIABLE=43
 
-  assertEqual "$(support/variable_check)" __
-
+  # Variable was not exported, so process sees nothing
+  assertEqual "$(support/variable_check)" ""
+  
+  # Variable was exported
   export MY_EXPORTED_VARIABLE=43
 
-  assertEqual "$(support/variable_check)" __
+  # Now the variable is exported and visible to processes
+  assertEqual "$(support/variable_check)" 43
 }
 
