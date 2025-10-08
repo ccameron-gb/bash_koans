@@ -48,13 +48,15 @@ test_global_variables_from_functions() {
 
 # In this function we define a local variable, it is not accessible outside
 function_with_a_local_variable() {
+  # Declare a local variable named 'THIS_VARIABLE_IS_LOCAL' and assign 42
   local THIS_VARIABLE_IS_LOCAL=42
 }
 # Run the function
 function_with_a_local_variable
 
 test_local_variables() {
-  assertEqual $THIS_VARIABLE_IS_LOCAL __
+  # Local variable is not visible outside its function, so it should be empty here
+  assertEqual $THIS_VARIABLE_IS_LOCAL ""
 }
 
 test_variable_name_expansion_within_text() {
