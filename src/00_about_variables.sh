@@ -35,13 +35,15 @@ test_global_variables() {
 
 # In this function we define a global variable, it becomes available outside
 function_with_a_global_variable() {
+  # Declare a global variable named 'THIS_VARIABLE_IS_GLOBAL' and assign 42
   THIS_VARIABLE_IS_GLOBAL_FROM_A_FUNCTION=42
 }
 # Run the function
 function_with_a_global_variable
 
 test_global_variables_from_functions() {
-  assertEqual $THIS_VARIABLE_IS_GLOBAL_FROM_A_FUNCTION __
+  # Check that the variable defined inside the function is now globally accessible
+  assertEqual $THIS_VARIABLE_IS_GLOBAL_FROM_A_FUNCTION 42
 }
 
 # In this function we define a local variable, it is not accessible outside
