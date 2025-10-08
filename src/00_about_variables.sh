@@ -60,10 +60,12 @@ test_local_variables() {
 }
 
 test_variable_name_expansion_within_text() {
+  # Declare a local variable named 'var1' and assign "myvar"
   local var1=myvar
 
   # __ = this_is_myvar_yay
-  assertEqual this_is_${var1}_yay __
+  # ${var1} expands to "myvar", so this becomes "this_is_myvar_yay"
+  assertEqual this_is_${var1}_yay this_is_myvar_yay
 
 }
 
