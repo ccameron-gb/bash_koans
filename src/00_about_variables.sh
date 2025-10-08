@@ -3,8 +3,10 @@
 lesson_title "Variables"
 
 test_setting_the_variable() {
+  # Declare a local variable named 'variable' and assign 1
   local variable=1
-  assertEqual 1 __
+  # Check that the value of 'variable' is 1
+  assertEqual 1 $variable
 }
 
 test_using_double_quotes() {
