@@ -17,9 +17,12 @@ test_using_double_quotes() {
 }
 
 test_unsetting_variables() {
+  # Declare a local variable named 'newVariable' and assign "Foooo"
   local newVariable="Foooo"
+  # unset removes the variable's value
   unset newVariable
-  assertEqual $newVariable __
+   # After unsetting, the variable is empty
+  assertEqual $newVariable ""
 }
 
 # Variables defined in global namespace are available everywhere
