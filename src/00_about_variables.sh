@@ -26,9 +26,11 @@ test_unsetting_variables() {
 }
 
 # Variables defined in global namespace are available everywhere
+# Declare a global variable named 'THIS_VARIABLE_IS_GLOBAL' and assign 42
 THIS_VARIABLE_IS_GLOBAL=42
 test_global_variables() {
-  assertEqual $THIS_VARIABLE_IS_GLOBAL __
+  # Access the global variable directly inside a function
+  assertEqual $THIS_VARIABLE_IS_GLOBAL 42
 }
 
 # In this function we define a global variable, it becomes available outside
