@@ -11,7 +11,9 @@ About pipe:
 Redirection:
 - Consider using > to direct some output or result to a file or text.
 - Consider using 2> to redirect standard errors to a file or text. 
-
+About Quoting:
+- The escape character \ in Bash is used to continue the next line part of code to the original. This skips the next line command and rather treats the remaining characters after the character part of the same line.
+  
 ## Tips and Gotchas
 - Ordering matters for redirecting stdout or stderr with its file descriptors.
 
