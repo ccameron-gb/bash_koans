@@ -2,7 +2,7 @@ lesson_title "Redirection"
 
 test_redirecting_stdout_to_file() {
 
-  # We set the output stdout to a text file named redirect_test.
+  # We set the output_stdout to print to a text file named redirect_test because we use ">"  to redirect it.
   # Then we use cat to read and copy the contents of the text file. 
 
   output_stdout > tmp/redirect_test.txt
@@ -15,7 +15,8 @@ test_redirecting_stdout_to_file() {
 
 test_redirecting_stderr_to_file() {
 
-  # We set the output stderr to a text file named redirect_test2.
+  # We redirect the standard error to a text file named redirect_test2 by using "2>".
+  # The output of stderr will be written into tmp/redirect_test2.txt.
   # Then we use cat to read and copy the contents of the text file. 
 
   output_stderr 2> tmp/redirect_test2.txt
@@ -27,8 +28,8 @@ test_redirecting_stderr_to_file() {
 
 test_redirecting_stdout_to_stderr() {
 
-  # Need assistance for clarity on this
-  # Syntax of 2> and 1>&2
+  # In this case, we need to redirect the output of stdout to the standard error destination.
+  # First, we need the standard error destination by redirecting it with tmp/redirect_test3.txt, then stdout then redirects with the standard error.
   output_stdout 2> tmp/redirect_test3.txt 1>&2
 
   local contents=$(cat tmp/redirect_test3.txt)
@@ -38,6 +39,11 @@ test_redirecting_stdout_to_stderr() {
 }
 
 test_redirecting_stderr_to_stdout() {
+
+  # Here we need to redirect the file descriptor of stdout to tmp/redirect_test4.txt. 
+  # Then we send stderr to where stdout is going by 2>&1 
+  # Consider ordering matters.
+
   output_stderr 1> tmp/redirect_test4.txt 2>&1
 
   local contents=$(cat tmp/redirect_test4.txt)
@@ -47,6 +53,10 @@ test_redirecting_stderr_to_stdout() {
 }
 
 test_redirecting_stdout_and_stderr_to_file() {
+
+  # Here we redirect stdout to redirect_test5.txt by 1>
+  # Then we redirect stderr to redirect_test6.txt by 2>
+
   output_both 1> tmp/redirect_test5.txt 2> tmp/redirect_test6.txt
 
   local contents5=$(cat tmp/redirect_test5.txt)
