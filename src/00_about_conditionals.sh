@@ -8,7 +8,7 @@ test_if_condition() {
     local assert='YES'
   fi
 
-  assertEqual $assert __
+  assertEqual $assert "YES"
 }
 
 
@@ -22,24 +22,26 @@ test_if_condition_with_else() {
     local assert='NO'
   fi
 
-  assertEqual $assert __
+  assertEqual $assert "NO"
 }
 
 test_if_condition_with_variables() {
   local variable="OMG"
-  local condition='OMG' #__
+  local condition='OMG'
 
   if [  "$variable" = "$condition" ]; then
-    local assert='ok'
+    local assert="EQUAL"
+  else
+    local assert="NOT_EQUAL"
   fi
 
-  assertEqual $assert __
+  assertEqual $assert "EQUAL"
 
 }
 
 test_multiple_if_conditions() {
 
-  local test='zomg' # __
+  local test='zomg' #this one checks multiple ifs
 
   if [ $test = 'ok' ]; then
     local assert='no'
@@ -47,7 +49,7 @@ test_multiple_if_conditions() {
     local assert='YES'
   fi
 
-  assertEqual $assert __
+  assertEqual $assert "YES"
 
 }
 
@@ -56,23 +58,22 @@ test_directory_if_conditions() {
     local assert='yes'
   fi
 
-  assertEqual $assert __
+  assertEqual $assert "yes"
 
   if [ ! -d NOT_EXISTENT_DIR ]; then
     local assert='no'
   fi
 
-  assertEqual $assert __
+  assertEqual $assert "no"
 
 }
 
 test_file_if_conditions() {
   if [ -f README.md ]; then
-    local assert='yes'
+    local assert='yes' # checking if file actually exists
   fi
 
-  assertEqual $assert __
-
+  assertEqual $assert "yes"
 }
 
-# TODO add koans for 'man test' entries
+#add more later for 'man test'
