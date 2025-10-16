@@ -21,6 +21,8 @@ About Quoting:
 - Ordering matters for redirecting stdout or stderr with its file descriptors.
 - We can create locally translated specific messages by telling the bash to find the translation if we contain it. If it doesn't, then it will result in the original text. 
 
+AMAL's:
+
 What is $(...)?
 This is going to be a command substitution in bash. Looking at the example below:
 
@@ -47,3 +49,28 @@ When putting it together, this command allows the user to replace words with oth
 ### Tips and Tricks
 
 - The best tip that can be given in this is really spending the time to break down the various components of such a command. This will give a lot of insight into what is actually going on when such a command is run.
+
+
+## Lessons Learned from Bash Koans
+
+### 6. Return Value Koan
+- **Understanding `$?`:** Every command in Bash sets an exit status stored in `$?`.  
+  - `0` indicates success.  
+  - Non-zero indicates failure (commonly `1`).  
+- **Examples:**
+  - `cd /nonexistent` → exit status `1` (failure).  
+  - `ls ~/` → exit status `0` (success).  
+- **Key takeaway:** Always check `$?` to determine if a command succeeded or failed, especially in scripts that depend on previous commands.
+
+### 7. Variables Koan
+- **Local vs Global Variables:**
+  - `local` variables are only visible within the function they are defined in.  
+  - Variables defined without `local` are global and accessible anywhere.  
+- **Variable Expansion:**
+  - Variables expand inside double quotes (`"foo $var"`) and with `${var}` syntax (`this_is_${var}_yay`).  
+- **Unsetting Variables:**
+  - `unset var` removes a variable value so it no longer exists.  
+- **Exporting Variables:**
+  - Only exported variables (`export VAR=value`) are visible to processes.  
+  - Local or nonexported variables remain invisible to processes.  
+- **Key takeaway:** Understanding scoping and exporting is crucial for writing reliable Bash scripts.
