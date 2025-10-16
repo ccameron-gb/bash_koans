@@ -42,6 +42,22 @@ What is "sed -e"?
 
 This component of the above command is going to serve as the stream editor. This would take components, applied the edit commands, and then it would write the result. In the above example example is replaced by nonexample using this component.
 
+ANUDEEP's:
+
+What are Loops?
+
+Loops in Bash help us repeat a set of commands multiple times without writing them again and again.  
+They’re essential for automating repetitive tasks like counting, processing files, or iterating over lists.
+
+What is a For Loop?
+
+A `for` loop repeats a block of code a fixed number of times or over a list of items.  
+Example:
+```bash
+for i in $(seq 1 10); do
+  echo "Iteration $i"
+done
+
 Let's put it all together:
 
 When putting it together, this command allows the user to replace words with other words and output the replacement.
